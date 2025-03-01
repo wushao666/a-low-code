@@ -6,7 +6,13 @@
       <slot />
     </div>
     <!-- 显示对应的业务组件 -->
-    <div class="center">显示对应的业务组件</div>
+    <div class="center">
+      <!-- 对应的组件的路由出口 -->
+      <RouterView v-slot="{ Component }">
+        <!-- 配合展示动态组件 -->
+        <component :is="Component" />
+      </RouterView>
+    </div>
     <!-- 编辑面板 -->
     <div class="right">编辑面板</div>
   </div>
