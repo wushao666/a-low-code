@@ -42,7 +42,7 @@
           <div>联系方式</div></router-link
         >
       </nav>
-      <!-- 路由出口 -->
+      <!-- 上面的router跳转的路由出口 -->
       <div class="coms">
         <RouterView />
       </div>

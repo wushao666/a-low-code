@@ -46,3 +46,41 @@ export default defineConfig({
 createWebHistory(import.meta.env.BASE_URL)
 ```
 这行代码确保了无论应用部署在哪个路径下，路由都能正确工作。
+
+Vue Router 子路由 path 规则说明
+子路由 path 不需要加斜杠 /
+在 Vue Router 中，子路由的 path 属性有以下规则：
+
+1. 父路由 - 需要完整路径，包含斜杠：
+```
+{
+  path: '/materials',  // ✅ 父路由需要完整路径
+  children: [...]
+}
+```
+2. 子路由 - 不需要加斜杠：
+```
+{
+  children: [
+    {
+      path: 'select-group',     // ✅ 正确：直接写相对路径
+      // path: '/select-group'  // ❌ 错误：不要加斜杠
+    }
+  ]
+}
+```
+原因说明
+1. Vue Router 会自动基于父路由路径构建完整路径
+2. 最终路径: /materials/select-group
+3. 使用相对路径可以：
+- 避免路径重复
+- 便于路由重构
+- 减少维护成本
+- 完整路径示例
+```
+/materials                       # 父路由
+/materials/select-group         # 子路由
+/materials/select-group/single-select  # 孙子路由
+```
+
+
