@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // 保证有一个根目录
     {
       path: '/',
       name: 'home',

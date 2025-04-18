@@ -1,7 +1,6 @@
-
 {
   "$schema": "https://json.schemastore.org/prettierrc",
-  "semi": false,
+  "semi": true, // whether to add a semicolon at the end of statements
   "singleQuote": true,
   "printWidth": 100
 }

@@ -22,7 +22,7 @@ export default function () {
     // 正确：防止组件被转换为响应式对象，减少性能上的开销，配置文件本身静态化即可，没必要响应式
     type: markRaw(SingleSelect), 
     name: 'single-select',
-    id: uuidv4(),
+    id: uuidv4(), //! 为了优化撤销/重做的操作，不用全量保存，根据id入栈即可
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
       title: {
