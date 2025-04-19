@@ -78,3 +78,12 @@
   </Layout>
 </template>
 ```
+## 封装单选题组件
+属于业务组件`src/components/SurveyComs`,这个目录又会有一些公共的组件
+```
+.
+├── Common          // 业务的公共组件
+├── EditItems       // 业务组件关联的编辑组件
+└── Materials       // 业务组件
+    └── SelectComs  // 业务组件还会分组,例如选择相关的组件
+```
