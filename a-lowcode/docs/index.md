@@ -87,3 +87,12 @@
 └── Materials       // 业务组件
     └── SelectComs  // 业务组件还会分组,例如选择相关的组件
 ```
+
+抽象选择题的通用header组件`a-lowcode`/src/components/SurveyComs/Common/MaterialsHeader.vue`
+
+为了配置编辑组件和业务组件的关联关系:
+1. 配置a-lowcode/src/configs/defaultStatus/SingleSelect.ts,一个函数返回对象
+2. 创建编辑组件a-lowcode/src/components/SurveyComs/EditItems/xxxEditor.vue
+3. 每个Status关联的编辑组件极客
+
+store仓库中创建store记录响应式数据a-lowcode/src/stores/useMaterial.ts

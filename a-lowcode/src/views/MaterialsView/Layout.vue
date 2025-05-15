@@ -10,7 +10,11 @@
       <!-- 对应的组件的路由出口 -->
       <RouterView v-slot="{ Component }">
         <!-- 配合展示动态组件 -->
-        <component :is="Component" />
+        <component 
+          :is="Component"
+          :status="currentCom.status"
+          :serialNum="1"
+        />
       </RouterView>
     </div>
     <!-- 编辑面板 -->
@@ -18,7 +22,15 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useMaterialStore } from "@/stores/useMaterial";
+import { computed } from "vue";
+
+//! 数据仓库
+const store = useMaterialStore()
+//! 获取当前选中的组件状态数据，用计算属性，当store那边改了当前组件，这边触发
+const currentCom = computed(() => store.coms[store.currentMaterialCom as keyof typeof store.coms])
+</script>
 
 <style scoped lang="scss">
 .layout-container {

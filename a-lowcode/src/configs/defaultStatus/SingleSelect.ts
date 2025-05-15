@@ -22,19 +22,20 @@ export default function () {
     // 正确：防止组件被转换为响应式对象，减少性能上的开销，配置文件本身静态化即可，没必要响应式
     type: markRaw(SingleSelect), 
     name: 'single-select',
-    id: uuidv4(), //! 为了优化撤销/重做的操作，不用全量保存，根据id入栈即可
+    id: uuidv4(), //! 为了优化撤销/重做的操作，不用全量保存，根据id入栈即可,每个业务组件的状态是唯一的
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
+    // 统一用 status 属性表示状态值 可能是字符串 可能是字符串数组 可能是对象数组
     status: {
       title: {
         id: uuidv4(),
-        status: '单选题默认标题',
+        status: '单选题默认标题!!!',
         isShow: true,
         name: 'title-editor',
         editCom: markRaw(TitleEditor),
       },
       desc: {
         id: uuidv4(),
-        status: '单选题默认描述',
+        status: '单选题默认描述~~~',
         isShow: true,
         name: 'desc-editor',
         editCom: markRaw(DescEditor),
