@@ -2,6 +2,7 @@
 // 业务组件和其他位置修改都是这里
 import { defineStore } from 'pinia';
 import { defaultStatusMap } from '@/configs/defaultStatus/defaultStatusMap';
+import { setTextStatus } from './actions';
 
 export const useMaterialStore = defineStore('materialStore', {
   state: () => ({
@@ -12,4 +13,7 @@ export const useMaterialStore = defineStore('materialStore', {
       'single-select': defaultStatusMap['single-select'](),
     },
   }),
+  actions: {
+    setTextStatus,
+  }
 });
