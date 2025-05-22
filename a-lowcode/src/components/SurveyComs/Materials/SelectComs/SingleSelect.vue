@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div :class="{
+    'text-center': statusComputed.position === 1,
+  }">
     <MaterialsHeader 
       :serial-num="statusComputed.serialNum" 
       :title="statusComputed.title" 
@@ -50,6 +52,7 @@ const statusComputed = computed(() => {
     descWeight: getPropsCurrentStatus(props.status.descWeight),
     titleColor: getPropsTextStatus(props.status.titleColor),
     descColor: getPropsTextStatus(props.status.descColor),
+    position: getPropsCurrentStatus(props.status.position),
   }
 })
 </script>

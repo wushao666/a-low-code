@@ -29,6 +29,8 @@ import { useMaterialStore } from "@/stores/useMaterial";
 import { computed } from "vue";
 import EditPanel from "@/components/SurveyComs/EditItems/EditPanel.vue";
 import { provide } from "vue";
+import { ElMessage } from 'element-plus'
+import { StatusType } from "@/stores/actions";
 
 //! 数据仓库
 const store = useMaterialStore()
@@ -43,6 +45,8 @@ const updateStatus = (key: string, payload?: number | string | boolean | object)
   switch (key) {
     case "title":
     case "desc":
+    case "titleColor":
+    case "descColor":
       if (typeof payload !== "string") {
         console.error('Invalid payload type for "title or desc". Expected string.');
         return;
@@ -50,6 +54,52 @@ const updateStatus = (key: string, payload?: number | string | boolean | object)
       }
       store.setTextStatus(currentCom.value.status[key], payload as string)
       break
+    case "options":
+      const length = currentCom.value.status[key].status.length
+      // 如果没有传入 payload，说明是添加选项
+      if (payload === undefined) {
+        store.addTextOptions(currentCom.value.status[key], `默认选项${length+1}`);
+      } else {
+        const result = store.removeTextOptions(currentCom.value.status[key], payload as number)
+        if (result) {
+          ElMessage.success('删除成功');
+        } else {
+          ElMessage.error('至少保留两个选项');
+        }
+        
+      }
+      break;
+    case "position":
+      if (typeof payload !== "number") {
+        console.error('Invalid payload type for "position". Expected number.');
+        return;
+      }
+      store.updateCurrentStatus(StatusType.Position,currentCom.value.status[key], payload as number)
+      break;
+    case "titleSize":
+    case "descSize":
+      if (typeof payload !== "number") {
+        console.error('Invalid payload type for "size". Expected number.');
+        return;
+      }
+      store.updateCurrentStatus(StatusType.Position, currentCom.value.status[key], payload as number)
+      break;
+    case "titleWeight":
+    case "descWeight":
+      if (typeof payload !== "number") {
+        console.error('Invalid payload type for "size". Expected number.');
+        return;
+      }
+      store.updateCurrentStatus(StatusType.Weight,currentCom.value.status[key], payload as number)
+      break;
+    case "titleItalic":
+    case "descItalic":
+      if (typeof payload !== "number") {
+        console.error('Invalid payload type for "size". Expected number.');
+        return;
+      }
+      store.updateCurrentStatus(StatusType.Italic, currentCom.value.status[key], payload as number)
+      break;
     default:
       break;
   }

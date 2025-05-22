@@ -2,7 +2,16 @@
 // 业务组件和其他位置修改都是这里
 import { defineStore } from 'pinia';
 import { defaultStatusMap } from '@/configs/defaultStatus/defaultStatusMap';
-import { setTextStatus } from './actions';
+import { 
+  addTextOptions, 
+  removeTextOptions, 
+  setTextStatus,
+  // setPositionStatus,
+  // setSizeStatus,
+  // setWeightStatus,
+  // setItalicStatus,
+  updateCurrentStatus,
+} from './actions';
 
 export const useMaterialStore = defineStore('materialStore', {
   state: () => ({
@@ -15,5 +24,12 @@ export const useMaterialStore = defineStore('materialStore', {
   }),
   actions: {
     setTextStatus,
+    addTextOptions,
+    removeTextOptions,
+    // setPositionStatus,
+    // setSizeStatus,
+    // setWeightStatus,
+    // setItalicStatus,
+    updateCurrentStatus,
   }
 });

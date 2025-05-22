@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { VueComType } from '@/types';
-import type { TextProps } from '@/types/configStatus';
 import { inject } from 'vue';
 import { ref } from 'vue';
 
