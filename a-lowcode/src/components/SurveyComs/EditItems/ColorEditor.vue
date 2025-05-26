@@ -1,6 +1,5 @@
 <template>
-  <div class="flex align-items-center space-between">
-    <div>{{ title }}</div>
+  <ButtonGroup :title="`${title}`" :status="`${status}`">
     <el-color-picker 
       v-model="color"
       color-format="hex"
@@ -8,10 +7,15 @@
       :predefine="predefineColors"
       @change="handleColorChange"
     />
-  </div>
+  </ButtonGroup>
+  <!-- <div class="flex align-items-center space-between">
+    <div>{{ title }}</div>
+    
+  </div> -->
 </template>
 
 <script lang="ts" setup>
+import ButtonGroup from './ButtonGroup.vue'
 import type { VueComType } from '@/types/common';
 import { inject } from 'vue';
 import { ref } from 'vue'
